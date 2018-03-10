@@ -88,5 +88,10 @@ public class ModuleService extends BaseService<Module>
 		}
 		return ids;
 	}
-	
+
+	@Override
+	public List<Module> getModuleListByProjectId(String projectId) {
+		return findByMap(Tools.getMap("projectId",projectId),null,null);
+	}
+
 }

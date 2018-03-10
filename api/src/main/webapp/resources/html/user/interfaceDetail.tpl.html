@@ -55,8 +55,12 @@
 					<input  class="form-control" type="text" ng-model="model.monitorTypeName" id="monitorTypeName" required placeholder="点击选择"
 					ng-focus="loadPickByName('iwidth=220|iheight=320|tagName=monitorTypeName|tag=monitorType|code=MONITORTYPE|def='+model.monitorType,$event)">
 					</td>
-					<td class="tc"></td>
-					<td class="tc"></td>
+					<td class="tc">前台是否可以<br/>操作生产环境</td>
+					<td>
+						<input class="form-control" type="text" id="operFlag"
+							   ng-focus="loadPick($event,220,220,'true','operFlag','OPERFLAG','',model.operFlag);"
+							   ng-model="model.operFlag" required placeholder="请点击输入框选择">
+					</td>
 				</tr>
 				<tr ng-if="model.monitorType>1">
 					<td class="tc">监控内容<br/>符合该条件则会发送邮件告警</td>

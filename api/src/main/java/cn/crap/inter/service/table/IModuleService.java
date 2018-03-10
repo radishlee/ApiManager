@@ -23,6 +23,8 @@ public interface IModuleService extends IBaseService<Module>{
 	 */
 	List<String> getList(Byte status, String type, String userId);
 	List<String> getListByStatuss(List<Byte> statuss, String type, String userId);
+
+	List<Module> getModuleListByProjectId(String projectId);
 	
 	
 	

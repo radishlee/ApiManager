@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import cn.crap.inter.service.table.IModuleService;
+import cn.crap.model.Module;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +37,8 @@ public class MenuService extends BaseService<Menu> implements IMenuService {
 
 	@Autowired
 	private IProjectService projectService;
+	@Autowired
+	private IModuleService moduleService;
 	@Autowired
 	private IArticleService articleService;
 	@Autowired
@@ -93,6 +97,11 @@ public class MenuService extends BaseService<Menu> implements IMenuService {
 				subMenu.setParentId("recommendProjectId");
 				subMenu.setType(MenuType.FRONT.name());
 				subMenu.setMenuUrl(String.format(Const.FRONT_PROJECT_URL, project.getId()));
+				//增加特殊功能如果工程下只有一个模块 直接显示接口
+				List<Module> moduleList = moduleService.getModuleListByProjectId(project.getId());
+				if(moduleList!=null&&moduleList.size()==1){
+					subMenu.setMenuUrl(String.format(Const.FRONT_INTERFACE_URL, project.getId(),moduleList.get(0).getId()));
+				}
 				menuVO.getSubMenu().add(subMenu);
 			}
 			// 添加更多按钮

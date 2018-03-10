@@ -25,6 +25,7 @@ public class Module extends BaseModel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private String url;
+	private String productUrl;//生产环境url
 	private byte canDelete;
 	private String remark;
 	private String userId;
@@ -65,7 +66,15 @@ public class Module extends BaseModel implements Serializable{
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+
+	@Column(name="productUrl")
+	public String getProductUrl() {
+		return productUrl;
+	}
+	public void setProductUrl(String productUrl) {
+		this.productUrl = productUrl;
+	}
+
 	@Column(name="canDelete")
 	public byte getCanDelete() {
 		return canDelete;

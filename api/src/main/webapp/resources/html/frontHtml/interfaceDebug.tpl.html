@@ -1,7 +1,7 @@
 <div class="r0 p20 pt10 col-xs-12" ng-controller="interfaceDetailCtrl">
 <div class="col-xs-12 p0 f12 lh26">
 		<div class="fb f20 pb10 C555 mt10">
-			<div class="fl m0">Url：{{model.fullUrl}}</div>
+			<div class="fl m0">Url：{{model.url}}</div>
 			<div class="fr m0">
 				版本号：
 				<a href="javascript:void(0)" class="f12 btn btn-purple btn-xs" ><i class="iconfont">&#xe625;&nbsp;</i>{{model.version}}</a>
@@ -24,10 +24,21 @@
 		
 			<form ng-submit="getDebugResult()">
 				<table class="table table-bordered table-hover">
+					<input type="hidden" ng-model="model.fullUrl">
+					<input type="hidden" ng-model="model.productFullUrl">
 					<tr>
-						<td>url</td>
+						<td>请求环境</td>
 						<td>
-							<input type="text" class="form-control" ng-model="model.fullUrl" required placeholder="示例：http://api.crap.cn/CustomerOrder/{id}">
+							<select id="debug_env" name="debug_env" ng-disabled="!model.operFlag">
+								<option value="test">测试环境</option>
+								<option value="prod">生产环境</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>URL</td>
+						<td>
+							<input type="text" class="form-control" ng-model="model.url" readonly />
 					    </td>
 					</tr>
 					<tr>

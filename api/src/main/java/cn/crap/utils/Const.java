@@ -75,6 +75,7 @@ public class Const {
 	// url
 	public static final String FRONT_ARTICLE_URL = "#%s/article/list/%s/ARTICLE/%s/NULL";
 	public static final String FRONT_PROJECT_URL = "#/%s/module/list";
+	public static final String FRONT_INTERFACE_URL = "#/%s/interface/list/%s";
 	
 	//系统设置
 	public static final String SETTING_SECRETKEY = "SECRETKEY";

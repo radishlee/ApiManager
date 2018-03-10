@@ -45,11 +45,14 @@ public class Interface extends BaseModel implements Serializable,ILuceneDto{
 	private String version;// 版本号
 	private String header;// 请求头
 	private String fullUrl;// 完整的url = moduleUrl + url
+	private String productFullUrl;// 完整的生成url = moduleUrl + productUrl
 	private int monitorType;
 	private String monitorText;
 	private String monitorEmails;
 	private String paramRemark; // 参数说明
 	private boolean template; // 是否是模板
+	private boolean operFlag;//前台是否可操作
+
 	public Interface() {
 	}
 
@@ -111,6 +114,13 @@ public class Interface extends BaseModel implements Serializable,ILuceneDto{
 		ICacheService cacheService = SpringContextHolder.getBean("cacheService", CacheService.class);
 		Module module = cacheService.getModule(moduleId);
 		return MyString.isEmpty(module.getUrl()) ? "" : module.getUrl();
+	}
+
+	@Transient
+	public String getModuleProductUrl() {
+		ICacheService cacheService = SpringContextHolder.getBean("cacheService", CacheService.class);
+		Module module = cacheService.getModule(moduleId);
+		return MyString.isEmpty(module.getProductUrl()) ? "" : module.getProductUrl();
 	}
 
 	@Column(name = "errors")
@@ -281,7 +291,16 @@ public class Interface extends BaseModel implements Serializable,ILuceneDto{
 	public void setFullUrl(String fullUrl) {
 		this.fullUrl = fullUrl;
 	}
-	
+
+	@Column(name = "productFullUrl")
+	public String getProductFullUrl() {
+		return productFullUrl;
+	}
+
+	public void setProductFullUrl(String productFullUrl) {
+		this.productFullUrl = productFullUrl;
+	}
+
 	@Column(name = "monitorType")
 	public int getMonitorType() {
 		return monitorType;
@@ -321,7 +340,16 @@ public class Interface extends BaseModel implements Serializable,ILuceneDto{
 		this.template = template;
 	}
 
-	@Transient 
+	@Column(name = "isOperFlag")
+	public boolean isOperFlag() {
+		return operFlag;
+	}
+
+	public void setOperFlag(boolean operFlag) {
+		this.operFlag = operFlag;
+	}
+
+	@Transient
 	public String getRemarkNoHtml(){
 		return Tools.subString( Tools.removeHtml(this.remark), 166, "...");
 	}

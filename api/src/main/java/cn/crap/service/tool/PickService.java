@@ -2,15 +2,12 @@ package cn.crap.service.tool;
 
 import java.util.List;
 
+import cn.crap.enumeration.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.crap.dto.LoginInfoDto;
 import cn.crap.dto.PickDto;
-import cn.crap.enumeration.InterfaceStatus;
-import cn.crap.enumeration.MonitorType;
-import cn.crap.enumeration.RequestMethod;
-import cn.crap.enumeration.TrueOrFalse;
 import cn.crap.framework.MyException;
 import cn.crap.inter.service.table.IArticleService;
 import cn.crap.inter.service.table.IErrorService;
@@ -67,6 +64,12 @@ public class PickService implements IPickService{
 				// 枚举 接口状态
 			case "INTERFACESTATUS":
 				for (InterfaceStatus status : InterfaceStatus.values()) {
+					pick = new PickDto(status.getName(), status.name());
+					picks.add(pick);
+				}
+				return;
+			case "OPERFLAG":
+				for (OperFlag status : OperFlag.values()) {
 					pick = new PickDto(status.getName(), status.name());
 					picks.add(pick);
 				}
