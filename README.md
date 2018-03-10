@@ -78,17 +78,17 @@ http://blog.csdn.net/torrytang/article/details/52728160
 [2016 年9月获得码云推荐]</br>
 [2016 年度码云新增热门开源软件排行榜 TOP 50——【CrapApi排名16】](http://www.oschina.net//news/81027/2016-oschina-git-new-software-top-50)</br>
 
-commmit id 3054056 新增功能
-模块增加生产环境url 页面增加输入选项
-增加是否能在前台操作生产环境选项
-前台显示url改成部分url
-增加选择环境下拉列表
-增加可用不可用类型枚举
+commmit id 3054056</br>
+新增功能</br>
+模块增加生产环境url 页面增加输入选项</br>
+增加是否能在前台操作生产环境选项</br>
+前台显示url改成部分url</br>
+增加选择环境下拉列表</br>
+增加可用不可用类型枚举</br>
 
-sql
-
+sql</br>
 ALTER TABLE interface ADD COLUMN productFullUrl varchar(200) NOT NULL COMMENT 'api生产环境全路径' AFTER fullUrl;
 ALTER TABLE module ADD COLUMN productUrl varchar(200) NOT NULL COMMENT '模块生产环境地址' AFTER url;
-ALTER TABLE interface ADD COLUMN isOperFlag bit(1) NOT NULL DEFAULT b'0' COMMENT '前台是否可操作' AFTER isTemplate;
+ALTER TABLE interface ADD COLUMN isOperFlag bit(1) NOT NULL DEFAULT b'0' COMMENT '前台是否可操作' AFTER isTemplate;</br>
 
 
